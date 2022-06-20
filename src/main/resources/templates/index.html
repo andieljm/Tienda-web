@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaft.org">
     <head>
-        <title>Tienda</title>
+        <title>TechShop</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
     </head>
     <body>
         <!--<h1>Un cliente</h1>
@@ -15,24 +16,32 @@
         <div>Saludos</div>
         <p th:text="${texto}">prueba</p>
         <br>-->
+        <header th:replace="layout/plantilla :: header"></header>
+        
+        <h2>Lista de clientes</h2>
+        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
         <br>
-        <h1>Lista de clientes</h1>
+        <br>
         <div th:if="${clientes != null and !clientes.empty}">
         <table border="1">
-            <thead>
+            <thead id="encabezadoTabla">
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Telefono</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="item: ${clientes}">
-                    <td th:text="${item.nombre}"></td>
+                    <td th:class="${item.nombre == 'pepa'} ? nombreA : nombreR" th:text="${item.nombre}"></td>
                     <td th:text="${item.apellidos}"></td>
                     <td th:text="${item.correo}"></td>
                     <td th:text="${item.telefono}"></td>
+                    <td><a th:href="@{/modificarCliente/} + ${item.idCliente}">Modificar</a></td>
+                    <td><a th:href="@{/eliminarCliente/} + ${item.idCliente}">Eliminar</a></td>
                 </tr>
             </tbody>
         </table>
@@ -40,5 +49,7 @@
         <div th:if="${clientes == null or clientes.empty}">
             Lista de clientes vacia.
         </div>
+        
+        <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>

@@ -14,6 +14,7 @@ public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCliente; //Hibernate lo trasnforma en id_cliente
+//    @Column(name = "nombre") para buscarlo manualmente
     private String nombre;
     private String apellidos;
     private String correo;

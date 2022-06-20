@@ -69,3 +69,11 @@
 #tablaResumen tr:nth-child(even) {
     background-color: coral;
 }
+
+.nombreA{
+    color: #24a1df;
+}
+
+.nombreR{
+    color: #ff0033;
+}
