@@ -12,13 +12,17 @@ public class Articulo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idArticulo; // hibernate lo trasforma id_articulo
+    @Column(name = "id_articulo")
+    private Long idArticulo; // Hibernate lo transforma en id_categoria
     private Long idCategoria;
     private String descripcion;
     private String detalle;
     private double precio;
     private int existencias;
     private boolean activo;
+
+    public Articulo() {
+    }
 
     public Articulo(Long idCategoria, String descripcion, String detalle, double precio, int existencias, boolean activo) {
         this.idCategoria = idCategoria;
@@ -28,8 +32,4 @@ public class Articulo implements Serializable {
         this.existencias = existencias;
         this.activo = activo;
     }
-
-    public Articulo() {
-    }
-
 }

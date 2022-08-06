@@ -22,7 +22,7 @@ public class ArticuloController {
 
     @Autowired
     private ArticuloService articuloService;
-    
+
     @Autowired
     private CategoriaService categoriaService;
 
@@ -33,13 +33,13 @@ public class ArticuloController {
 
         model.addAttribute("articulos", articulos);
         var categorias = categoriaService.getCategorias(true);
-        model.addAttribute("categorias",categorias);
+        model.addAttribute("categorias", categorias);
         return "/articulo/listado";
     }
 
     @GetMapping("/articulo/nuevo")
     public String nuevoArticulo(Articulo articulo, Model model) {
-        
+
         return "/articulo/modificar";
     }
 
@@ -52,8 +52,8 @@ public class ArticuloController {
     @GetMapping("/articulo/modificar/{idArticulo}")
     public String modificarArticulo(Articulo articulo, Model model) {
         var categorias = categoriaService.getCategorias(true);
-        model.addAttribute("categorias",categorias);
-        
+        model.addAttribute("categorias", categorias);
+
         articulo = articuloService.getArticulo(articulo);
         model.addAttribute("articulo", articulo);
         return "/articulo/modificar";
@@ -66,4 +66,3 @@ public class ArticuloController {
     }
 
 }
-
